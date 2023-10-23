@@ -2,6 +2,7 @@ package ru.netology.data;
 
 import com.github.javafaker.Faker;
 import lombok.Value;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -53,10 +54,9 @@ public class DataHelper {
     }
 
     public CardInfo getInvalidCardInfo(String card) {
-        return new CardInfo(getCardNumber(card), "13", "20", "Иванов Петр", generateCvc());
+        return new CardInfo(getCardNumber(card), "13", "20", "Петров Петр", generateCvc());
     }
     public CardInfo getInvalidFormatCard (String card) {
         return new CardInfo(getCardNumber(card), "444", "4", "4444 @!", "1");
     }
-
 }

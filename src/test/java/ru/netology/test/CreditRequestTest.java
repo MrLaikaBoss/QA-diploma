@@ -5,7 +5,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
 import org.junit.jupiter.api.*;
 import ru.netology.data.DataHelper;
-import ru.netology.data.Helper;
+import ru.netology.data.SQLHelper;
 import ru.netology.page.OrderPage;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -36,8 +36,8 @@ public class CreditRequestTest {
         val creditPage = new OrderPage().goToCredit();
         creditPage.credit(cardInfo);
         creditPage.approved();
-        assertEquals("APPROVED", new Helper().getCreditRequestStatus());
-        assertNull(new Helper().getCreditId());
+        assertEquals("APPROVED", new SQLHelper().getCreditRequestStatus());
+        assertNull(new SQLHelper().getCreditId());
     }
 
     @Test
@@ -46,8 +46,8 @@ public class CreditRequestTest {
         val creditPage = new OrderPage().goToCredit();
         creditPage.credit(cardInfo);
         creditPage.declined();
-        assertEquals("DECLINED", new Helper().getCreditRequestStatus());
-        assertNull(new Helper().getCreditId());
+        assertEquals("DECLINED", new SQLHelper().getCreditRequestStatus());
+        assertNull(new SQLHelper().getCreditId());
     }
 
     @Test

@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-public class Helper {
+public class SQLHelper {
     private final QueryRunner runner = new QueryRunner();
     private final Properties prop = prop();
     private final Connection conn = getConnect();
@@ -19,7 +19,7 @@ public class Helper {
 
     private Properties prop() {
         Properties properties = new Properties();
-        try (InputStream is = Helper.class.getClassLoader().getResourceAsStream("application.properties")) {
+        try (InputStream is = SQLHelper.class.getClassLoader().getResourceAsStream("application.properties")) {
             properties.load(is);
         } catch (IOException ex) { ex.printStackTrace(); }
         return properties;
@@ -27,11 +27,7 @@ public class Helper {
 
     @SneakyThrows
     private Connection getConnect() {
-        return DriverManager.getConnection(
-                prop.getProperty("spring.datasource.url"),
-                prop.getProperty("spring.datasource.username"),
-                prop.getProperty("spring.datasource.password")
-        );
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
     }
     @SneakyThrows
     public String getPaymentStatus() {
@@ -54,3 +50,4 @@ public class Helper {
         return runner.query(conn, id, new ScalarHandler<>());
     }
 }
+
