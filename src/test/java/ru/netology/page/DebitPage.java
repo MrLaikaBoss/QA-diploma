@@ -12,9 +12,9 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class CreditPage {
+public class DebitPage {
 
-    private final SelenideElement creditHead = $(byText("Кредит по данным карты"));
+    private final SelenideElement debitHead = $(byText("Оплата по карте"));
     private final SelenideElement cardsNumberInput = $("[placeholder='0000 0000 0000 0000']");
     private final SelenideElement monthInput = $("[placeholder='08']");
     private final SelenideElement yearInput = $("[placeholder='22']");
@@ -29,9 +29,8 @@ public class CreditPage {
     private final SelenideElement errorMessageForInvalidYear = $(byText("Истёк срок действия карты"));
     private final SelenideElement errorMessageForNullName = $(byText("Поле обязательно для заполнения"));
 
-
-    public CreditPage() {
-        creditHead.shouldBe(visible);
+    public DebitPage() {
+        debitHead.shouldBe(visible);
     }
 
     public void enterCardData(DataHelper.CardInfo cardInfo) {
@@ -51,7 +50,7 @@ public class CreditPage {
         errorMessage.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public CreditPage clickContinueButton() {
+    public DebitPage clickContinueButton() {
         continueButton.click();
         return this;
     }

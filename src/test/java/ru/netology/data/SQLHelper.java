@@ -1,53 +1,41 @@
 package ru.netology.data;
 
 import lombok.SneakyThrows;
-import lombok.val;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Properties;
+import java.sql.SQLException;
 
 public class SQLHelper {
-    private final QueryRunner runner = new QueryRunner();
-    private final Properties prop = prop();
-    private final Connection conn = getConnect();
 
+    private static final QueryRunner runner = new QueryRunner();
 
-    private Properties prop() {
-        Properties properties = new Properties();
-        try (InputStream is = SQLHelper.class.getClassLoader().getResourceAsStream("application.properties")) {
-            properties.load(is);
-        } catch (IOException ex) { ex.printStackTrace(); }
-        return properties;
+    public SQLHelper() {
     }
 
     @SneakyThrows
-    private Connection getConnect() {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
+    public static Connection getConn() {
+        String url = System.getProperty("url");
+        String user = System.getProperty("user");
+        String password = System.getProperty("password");
+        return DriverManager.getConnection(url, user, password);
     }
+
     @SneakyThrows
-    public String getPaymentStatus() {
-        val status = "SELECT status FROM payment_entity ORDER BY created DESC";
-        return runner.query(conn, status, new ScalarHandler<>());
+    public static String getDebitStatus() {
+        String statusSQL = "SELECT status FROM payment_entity ORDER BY created DESC LIMIT 1";
+        Connection conn = getConn();
+        return runner.query(conn, statusSQL, new ScalarHandler<String>());
     }
+
     @SneakyThrows
-    public Integer getPaymentAmount() {
-        val amount = "SELECT amount FROM payment_entity ORDER BY created DESC";
-        return runner.query(conn, amount, new ScalarHandler<>());
-    }
-    @SneakyThrows
-    public String getCreditRequestStatus() {
-        val status = "SELECT status FROM credit_request_entity ORDER BY created DESC";
-        return runner.query(conn, status, new ScalarHandler<>());
-    }
-    @SneakyThrows
-    public String getCreditId() {
-        val id = "SELECT credit_id FROM credit_request_entity ORDER BY created DESC";
-        return runner.query(conn, id, new ScalarHandler<>());
+    public String getCreditStatus() {
+        var creditStatusSQL = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1";
+        var conn = getConn();
+        var creditStatus = runner.query(conn, creditStatusSQL, new ScalarHandler<String>());
+        return creditStatus;
     }
 }
-
