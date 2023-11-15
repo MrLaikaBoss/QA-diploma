@@ -2,26 +2,21 @@ package ru.netology.data;
 
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class SQLHelper {
 
-    private static final QueryRunner runner = new QueryRunner();
-
-    public SQLHelper() {
-    }
+    private static QueryRunner runner = new QueryRunner();
+    private static String dbUrl = System.getProperty("db.url");
+    private static String user = System.getProperty("db.user");
+    private static String password = System.getProperty("db.pass");
 
     @SneakyThrows
     public static Connection getConn() {
-        String url = System.getProperty("url");
-        String user = System.getProperty("user");
-        String password = System.getProperty("password");
-        return DriverManager.getConnection(url, user, password);
+        return DriverManager.getConnection(dbUrl, user, password);
     }
 
     @SneakyThrows
@@ -32,10 +27,9 @@ public class SQLHelper {
     }
 
     @SneakyThrows
-    public String getCreditStatus() {
-        var creditStatusSQL = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1";
-        var conn = getConn();
-        var creditStatus = runner.query(conn, creditStatusSQL, new ScalarHandler<String>());
-        return creditStatus;
+    public static String getCreditStatus() {
+        String statusSQL = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1";
+        Connection conn = getConn();
+        return runner.query(conn, statusSQL, new ScalarHandler<String>());
     }
 }
