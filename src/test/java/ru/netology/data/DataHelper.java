@@ -77,9 +77,8 @@ public class DataHelper {
         return cardNumber;
     }
 
-    private static String generateInvalidCardNumberWithSymbols() {
-        String cardNumber = "*&^";
-        return cardNumber;
+    private static String getSpecSymbolString() {
+        return "*&^";
     }
 
     private static String generateInvalidCardNumberWithNotExistNumber() {
@@ -90,7 +89,6 @@ public class DataHelper {
     }
 
     private static String generateInvalidMonth() {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM");
         String month = Integer.toString(faker.number().numberBetween(13, 99));
         return month;
     }
@@ -107,13 +105,8 @@ public class DataHelper {
         return month;
     }
 
-    private static String generateInvalidMonthWithSymbols() {
-        String month = "*&^";
-        return month;
-    }
 
     private static String generateInvalidYear() {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yy");
         String year = Integer.toString(faker.number().numberBetween(10, 22));
         return year;
     }
@@ -130,10 +123,6 @@ public class DataHelper {
         return year;
     }
 
-    private static String generateInvalidYearWithSymbols() {
-        String year = "*&^";
-        return year;
-    }
 
     private static String generateInvalidNameWithOneLetter() {
         FakeValuesService fakeValuesService = new FakeValuesService(
@@ -147,15 +136,6 @@ public class DataHelper {
         return name;
     }
 
-    private static String generateInvalidNameWithSymbols() {
-        String name = "*&^";
-        return name;
-    }
-
-    private String generateInvalidCvc() {
-        String cvc = Integer.toString(faker.number().numberBetween(00, 99));
-        return cvc;
-    }
 
     private static String generateInvalidCvcWithOneNumber() {
         String cvc = Integer.toString(faker.number().numberBetween(0, 9));
@@ -169,10 +149,6 @@ public class DataHelper {
         return cvc;
     }
 
-    private static String generateInvalidCvcWithSymbols() {
-        String cvc = "*&^";
-        return cvc;
-    }
 
     public static CardInfo getInvalidCardInfoWithEmptyCardNumber() {
         return new CardInfo(
@@ -239,7 +215,7 @@ public class DataHelper {
 
     public static CardInfo getInvalidCardInfoWithInvalidCardNumberWithSymbols() {
         return new CardInfo(
-                generateInvalidCardNumberWithSymbols(),
+                getSpecSymbolString(),
                 generateRandomMonth(),
                 generateRandomYear(),
                 generateRandomName("en"),
@@ -285,7 +261,7 @@ public class DataHelper {
     public static CardInfo getInvalidCardInfoWithInvalidMonthWithSymbols(String card) {
         return new CardInfo(
                 getCardNumber(card),
-                generateInvalidMonthWithSymbols(),
+                getSpecSymbolString(),
                 generateRandomYear(),
                 generateRandomName("en"),
                 generateRandomCvc());
@@ -322,7 +298,7 @@ public class DataHelper {
         return new CardInfo(
                 getCardNumber(card),
                 generateRandomMonth(),
-                generateInvalidYearWithSymbols(),
+                getSpecSymbolString(),
                 generateRandomName("en"),
                 generateRandomCvc());
     }
@@ -359,7 +335,7 @@ public class DataHelper {
                 getCardNumber(card),
                 generateRandomMonth(),
                 generateRandomYear(),
-                generateInvalidNameWithSymbols(),
+                getSpecSymbolString(),
                 generateRandomCvc());
     }
 
@@ -387,6 +363,6 @@ public class DataHelper {
                 generateRandomMonth(),
                 generateRandomYear(),
                 generateRandomName("en"),
-                generateInvalidCvcWithSymbols());
+                getSpecSymbolString());
     }
 }

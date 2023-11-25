@@ -38,7 +38,7 @@ ______
 
 1. `git clone https://github.com/MrLaikaBoss/QA-diploma` - Клонировать репозиторий
 2. `docker-compose up -d` - Запустить контейнер
-3. `java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar ./artifacts/aqa-shop.jar` - Запустить jar-файл с базой данных MySQL
+3. `java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar ./artifacts/aqa-shop.jar` - Запустить jar-файл с базой данных MySQL
 4. http://localhost:8080/ - Проверить доступность приложения в браузере
 5. `./gradlew clean test '-Ddb.url=jdbc:mysql://localhost:3306/app'` - Открыть второй терминал, запустить автотесты
 6. `./gradlew allureReport` , `./gradlew allureServe` - Создание отчета Allure
@@ -48,7 +48,7 @@ ______
 * #### Работа с базой данных PostgreSQl:
 
 1. `docker-compose up -d` - Запустить контейнер
-2. `java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar ./artifacts/aqa-shop.jar` - Запустить jar-файл с базой данных PostgreSQl
+2. `java  "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar .\artifacts\aqa-shop.jar` - Запустить jar-файл с базой данных PostgreSQl
 3. http://localhost:8080/ - Проверить доступность приложения в браузере
 4. `./gradlew clean test '-Ddb.url=jdbc:postgresql://localhost:5432/app'`- В новой вкладке терминала запустить автотесты
 5. `./gradlew allureReport` , `./gradlew allureServe` - Создание отчета Allure
