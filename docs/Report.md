@@ -17,10 +17,9 @@ ______
 #### При подключении к СУБД MySQL:
 - Оплата по дебетовой карте - 42 (позитивных - 34, негативных - 9)
 - Оплата по кредитной карте - 42 (позитивных - 35, негативных - 9)
-- 
-![Скриншот-07-11-2023 13_57_47](https://github.com/MrLaikaBoss/QA-diploma/assets/131680949/dcc7c41b-92e0-4c6c-9ade-600fe685557f)
-![Скриншот-07-11-2023 13_58_42](https://github.com/MrLaikaBoss/QA-diploma/assets/131680949/73c71ce2-7637-450c-8249-6847a2fe1a07)
-![Скриншот-07-11-2023 14_00_10](https://github.com/MrLaikaBoss/QA-diploma/assets/131680949/9bd83aa9-304e-4190-94ec-dc26e2c2d111)
+
+![Скриншот 25-11-2023 123145](https://github.com/MrLaikaBoss/QA-diploma/assets/131680949/84d85e68-8a3f-4e6d-9601-bf2000ed3efd)
+![Скриншот 25-11-2023 123349](https://github.com/MrLaikaBoss/QA-diploma/assets/131680949/d93b2a3c-2747-4990-81ea-a5effa5eaddc)
 
 
 * 69 тестов - успешно пройдены (76.66%)
@@ -30,14 +29,12 @@ ______
 
 #### При подключении к СУБД PostgreSQL
 
-![Скриншот-11-11-2023 13_15_14](https://github.com/MrLaikaBoss/QA-diploma/assets/131680949/50f643f0-8ee2-4399-814e-993d36ef7aba)
-![Скриншот-11-11-2023 13_16_15](https://github.com/MrLaikaBoss/QA-diploma/assets/131680949/e6ad70c5-2478-4e47-95c9-757720c50752)
-![Скриншот-11-11-2023 13_18_19](https://github.com/MrLaikaBoss/QA-diploma/assets/131680949/d342c7be-97d0-485e-a606-b88909bfd560)
+![Скриншот 25-11-2023 125216](https://github.com/MrLaikaBoss/QA-diploma/assets/131680949/03f6b8da-6258-4742-92bc-4a28a9d6fc31)
+![Скриншот 25-11-2023 125146](https://github.com/MrLaikaBoss/QA-diploma/assets/131680949/5d435d8e-ebfa-4ee0-8f6f-647652322ac4)
 
 
 * 69 тестов - успешно пройдены (76.66%)
 * 18 тестов - не прошли (23.34%)
-
 
 ______
 
